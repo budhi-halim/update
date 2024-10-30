@@ -76,6 +76,6 @@ def main():
         yaml.dump(yaml_file_content, file, default_flow_style=False)
     
     print('Successfully updated execute_scripts.yml')
-
+    print('x')
 if __name__ == '__main__':
     main()
