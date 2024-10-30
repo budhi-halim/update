@@ -76,6 +76,10 @@ def main():
         yaml.dump(yaml_file_content, file, default_flow_style=False)
     
     print('Successfully updated execute_scripts.yml')
-    print('x')
+
+    print('Generating requirements.txt')
+    os.system('pip freeze > requirements.txt')
+    print('Successfully generated requirements.txt')
+
 if __name__ == '__main__':
     main()
