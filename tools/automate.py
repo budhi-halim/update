@@ -36,11 +36,11 @@ def main():
                     },
                     {
                         'name': 'List Requirements',
-                        'run': 'pip freeze > requirements.txt'
+                        'run': 'cd ${{ github.workspace }} && pip freeze > requirements.txt'
                     },
                     {
                         'name': 'Install Dependencies',
-                        'run': 'python -m pip install --upgrade pip && pip install -r requirements.txt'
+                        'run': 'cd ${{ github.workspace }} && python -m pip install --upgrade pip && pip install -r requirements.txt'
                     },
                     {
                         'name': 'Run Python Scripts',

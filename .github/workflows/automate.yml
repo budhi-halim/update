@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set up Python 3.13.0
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.13.0
@@ -25,9 +25,6 @@ jobs:
       
       - name: Run Automate
         run: python tools/automate.py
-      
-      - name: Display Workflow
-        run: cat .github/workflows/execute_scripts.yml
 
       - name: Add files to Git
         run: |
