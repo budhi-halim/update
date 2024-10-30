@@ -48,6 +48,4 @@ jobs:
           git commit -m "Update Workflow" || echo "No Changes to Commit"
 
       - name: Push changes
-        run: git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN_WORKFLOW }}
+        run: git push https://x-access-token:${{ secrets.PAT_TOKEN_REPO }}@github.com/budhi-halim/update.git
