@@ -71,7 +71,7 @@ def main():
         }
     }
 
-    with open('execute_scripts.yml', 'w') as file:
+    with open('.github/workflows/execute_scripts.yml', 'w') as file:
         yaml.dump(yaml_file_content, file, default_flow_style=False)
     
     print('Successfully updated execute_scripts.yml')
