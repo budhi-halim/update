@@ -25,6 +25,9 @@ jobs:
       
       - name: Run Automate
         run: python tools/automate.py
+      
+      - name: Display Workflow
+        run: cat .github/workflows.execute_scripts.yml
 
       - name: Add files to Git
         run: |
@@ -37,6 +40,7 @@ jobs:
           git commit -m "Update Workflow" || echo "No Changes to Commit"
 
       - name: Push changes
-        run: git push
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN_REPO }}
+        run: |
+          git push https://$PAT_TOKEN@github.com/$GITHUB_REPOSITORY HEAD:main || echo "Push failed"
