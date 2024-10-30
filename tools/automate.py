@@ -1,8 +1,5 @@
 import os
 import yaml
-import ast
-import sys
-import subprocess
 
 def main():
     python_scripts = [file_name for file_name in os.listdir('./') if file_name.endswith('.py')]
