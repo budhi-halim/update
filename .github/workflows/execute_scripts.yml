@@ -1,0 +1,36 @@
+jobs:
+  run-python-scripts:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.13.0
+    - name: List Requirements
+      run: cd ${{ github.workspace }} && pip freeze > requirements.txt
+    - name: Install Dependencies
+      run: cd ${{ github.workspace }} && python -m pip install --upgrade pip && pip
+        install -r requirements.txt
+    - name: Run Python Scripts
+      run: python zzz.py && python hsr.py && python wuwa.py
+    - name: Create Download Directories
+      run: mkdir - output/zzz && mkdir - output/hsr && mkdir - output/wuwa
+    - name: Set up Git User
+      run: git config --global user.name "github-actions[bot]" && git config --global
+        user.email "github-actions[bot]@users.noreply.github.com"
+    - name: Add Files to Git
+      run: git add output/zzz/* && git add output/hsr/* && git add output/wuwa/*
+    - name: Commit Changes
+      run: git commit -m "Daily Database Update" || echo "No Changes to Commit"
+    - name: Push Changes
+      run: git push
+name: Update Database
+'on':
+  push:
+    branches:
+    - main
+  schedule:
+  - cron: '*/15 * * * *'
+  workflow_dispatch: {}
