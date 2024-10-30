@@ -75,7 +75,6 @@ def main():
         yaml.dump(yaml_file_content, file, default_flow_style=False)
     
     print('Successfully updated execute_scripts.yml')
-    print('File creation success.' if os.path.exists('.github/workflows/execute_scripts.yml') else 'File creation failed.')
 
 if __name__ == '__main__':
     main()

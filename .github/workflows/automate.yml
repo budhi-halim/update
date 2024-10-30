@@ -29,18 +29,25 @@ jobs:
       - name: List files in workflows directory
         run: ls -la .github/workflows/
 
-      - name: Add files to Git
+      - name: Configure Git
         run: |
           git config --global user.name "$USER_NAME"
           git config --global user.email "$USER_EMAIL"
-          git add .github/workflows/execute_scripts.yml
+
+      - name: Verify Git Status Before add
+        run: git status
+
+      - name: Add Files to Git
+        run: git add -v .github/workflows/execute_scripts.yml
+
+      - name: Verify Git Status After add
+        run: git status
 
       - name: Commit changes
         run: |
           git commit -m "Update Workflow" || echo "No Changes to Commit"
 
       - name: Push changes
+        run: git commit "Update Workflow" || echo "No Changes to Commit"
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN_REPO }}
-        run: |
-          git push https://$PAT_TOKEN@github.com/$GITHUB_REPOSITORY HEAD:main || echo "Push failed"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
