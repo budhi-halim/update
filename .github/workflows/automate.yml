@@ -27,7 +27,7 @@ jobs:
         run: python tools/automate.py
       
       - name: Display Workflow
-        run: cat .github/workflows.execute_scripts.yml
+        run: cat .github/workflows/execute_scripts.yml
 
       - name: Add files to Git
         run: |
