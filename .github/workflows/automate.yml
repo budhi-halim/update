@@ -48,6 +48,6 @@ jobs:
           git commit -m "Update Workflow" || echo "No Changes to Commit"
 
       - name: Push changes
-        run: git commit "Update Workflow" || echo "No Changes to Commit"
+        run: git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
