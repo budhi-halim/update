@@ -2,6 +2,7 @@ import os
 import yaml
 
 def main():
+    print('Updating execute_scripts.yml')
     python_scripts = [file_name for file_name in os.listdir('./') if file_name.endswith('.py')]
 
     #Create YAML File
@@ -72,6 +73,8 @@ def main():
 
     with open('execute_scripts.yml', 'w') as file:
         yaml.dump(yaml_file_content, file, default_flow_style=False)
+    
+    print('Successfully updated execute_scripts.yml')
 
 if __name__ == '__main__':
     main()
