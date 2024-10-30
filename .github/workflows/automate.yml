@@ -50,4 +50,4 @@ jobs:
       - name: Push changes
         env:
           PAT_TOKEN_WORKFLOW: ${{ secrets.PAT_TOKEN_WORKFLOW }}
-        run: git push https://x-access-token:${WORKFLOW_PAT_TOKEN}@github.com/budhi-halim/update.git
+        run: git push https://x-access-token:${PAT_TOKEN_WORKFLOW}@github.com/budhi-halim/update.git
