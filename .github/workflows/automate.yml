@@ -26,6 +26,9 @@ jobs:
       - name: Run Automate
         run: python tools/automate.py
 
+      - name: List files in workflows directory
+        run: ls -la .github/workflows/
+
       - name: Add files to Git
         run: |
           git config --global user.name "$USER_NAME"
