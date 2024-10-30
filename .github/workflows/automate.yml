@@ -31,8 +31,8 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --global user.name "$USER_NAME"
-          git config --global user.email "$USER_EMAIL"
+          git config --global user.name "budhi-halim"
+          git config --global user.email "halimbudhiarto@gmail.com"
 
       - name: Verify Git Status Before add
         run: git status
