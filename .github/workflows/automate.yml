@@ -25,10 +25,6 @@ jobs:
       
       - name: Run Automate
         run: python tools/automate.py
-      
-      - name: Create download directories
-        run: |
-          mkdir - output/hsr
 
       - name: Add files to Git
         run: |
@@ -38,7 +34,7 @@ jobs:
 
       - name: Commit changes
         run: |
-          git commit -m "Daily database update" || echo "No changes to commit"
+          git commit -m "Update Workflow"
 
       - name: Push changes
         run: git push
