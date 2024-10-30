@@ -4,6 +4,7 @@ import yaml
 def main():
     print('Updating execute_scripts.yml')
     python_scripts = [file_name for file_name in os.listdir('./') if file_name.endswith('.py')]
+    python_scripts.sort()
 
     #Create YAML File
     yaml_file_content = {
