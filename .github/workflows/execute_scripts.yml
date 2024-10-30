@@ -29,5 +29,5 @@ name: Update Database
     branches:
     - main
   schedule:
-  - cron: '*/15 * * * *'
+  - cron: '0 17 * * *'
   workflow_dispatch: {}
