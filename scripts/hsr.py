@@ -162,7 +162,7 @@ def json_to_csv(json, file_name, lock):
     
     # Output
     with lock:
-        with open(f'output/wuwa/{file_name}.csv', 'w') as file:
+        with open(f'output/hsr/{file_name}.csv', 'w') as file:
             file.write(csv)
 
         print(f'Exported: {file_name}.csv', flush=True)
