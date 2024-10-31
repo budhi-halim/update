@@ -53,12 +53,9 @@ def generate_workflow_structure(python_script_list):
         'name': 'Update Database',
         'on': {
             'workflow_dispatch': {},
-            'push': {
-                'branches': ['main']
-            },
             'schedule': [
                 {
-                    'cron': '0 17 * * *'
+                    'cron': '0 * * * *'
                 }
             ]
         },
@@ -125,7 +122,7 @@ def log(func):
         # Prepare Constants
         file_directory = 'logs/log.txt'
         location = 'Asia/Jakarta'
-        timestamp_format = '%Y-%m-%d &H:%M:%S'
+        timestamp_format = '%Y-%m-%d %H:%M:%S'
 
         # Get Start Time
         start_time = get_local_time(location)
