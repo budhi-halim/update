@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch: 
 
 jobs:
   update-workflow:
@@ -39,7 +40,10 @@ jobs:
           git config --global user.email "${{ secrets.USER_EMAIL }}"
 
       - name: Add Files to Git
-        run: git add -v .github/workflows/execute_scripts.yml
+        run: |
+          git add -v .github/requirements.txt
+          git add -v .github/workflows/execute_scripts.yml
+          git add -v .github/log.txt
 
       - name: Commit changes
         run: |
