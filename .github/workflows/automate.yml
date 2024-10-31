@@ -41,9 +41,9 @@ jobs:
 
       - name: Add Files to Git
         run: |
-          git add -v .github/requirements.txt
+          git add -v requirements.txt
           git add -v .github/workflows/execute_scripts.yml
-          git add -v .github/log.txt
+          git add -v logs/log.txt
 
       - name: Commit changes
         run: |

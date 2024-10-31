@@ -123,7 +123,7 @@ def update_log_file(log_message, file_directory):
 def log(func):
     def wrapper(item):
         # Prepare Constants
-        file_directory = 'log.txt'
+        file_directory = 'logs/log.txt'
         location = 'Asia/Jakarta'
         timestamp_format = '%Y-%m-%d &H:%M:%S'
 
