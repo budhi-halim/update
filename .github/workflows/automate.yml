@@ -31,6 +31,12 @@ jobs:
           pip install PyYAML
           pip install pytz
       
+      - name: Create Directories
+        run: |
+          if [ ! -d 'logs' ]; then
+            mkdir -p logs
+          fi
+      
       - name: Run Automate
         run: python tools/automate.py
 
