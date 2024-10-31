@@ -133,22 +133,32 @@ def log(item):
             log_message = f'{start_time_formatted} Updating {item}...\n'
             update_log_file(log_message, file_directory)
             
-            # Execute Function
-            func()
+            try:
+                # Execute Function
+                func()
 
-            # Get Finish Time
-            finish_time = get_local_time(location)
-            finish_time_formatted = finish_time.strftime(timestamp_format)
+                # Get Finish Time
+                finish_time = get_local_time(location)
+                finish_time_formatted = finish_time.strftime(timestamp_format)
 
-            # Get Duration
-            duration = finish_time - start_time
-            hours, remainder = divmod(duration.total_seconds(), 3600)
-            minutes, seconds = divmod(remainder, 60)
-            duration = f'{int(hours)}h {int(minutes)}m {int(seconds)}s'
+                # Get Duration
+                duration = finish_time - start_time
+                hours, remainder = divmod(duration.total_seconds(), 3600)
+                minutes, seconds = divmod(remainder, 60)
+                duration = f'{int(hours)}h {int(minutes)}m {int(seconds)}s'
 
-            # Log Finish
-            log_message = f'{finish_time_formatted} Finished Updating {item} ({duration})\n'
-            update_log_file(log_message, file_directory)
+                # Log Finish
+                log_message = f'{finish_time_formatted} Finished Updating {item} ({duration})\n'
+                update_log_file(log_message, file_directory)
+            
+            except Exception as e:
+                # Get Error Time
+                error_time = get_local_time(location)
+                error_time_formatted = error_time.strftime(timestamp_format)
+
+                # Log Error
+                log_message = f'{error_time_formatted} An error occured: {e}\n'
+                update_log_file(log_message, file_directory)
         
         return wrapper
     return log_decorator

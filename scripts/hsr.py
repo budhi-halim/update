@@ -3,6 +3,7 @@ import urllib.request
 import re
 import concurrent.futures
 from threading import Lock
+from ..tools.utility import *
 
 # Utility Functions
 def get_html(url):
@@ -23,6 +24,7 @@ def clean_html(text):
     return text
 
 # Workflow Functions
+@log('(HSR) Getting character details...', '(HSR) Successfully retrieved character details')
 def get_character_details(character_order, character):
     name = character.split('/')[-1].replace('-', ' ').title()
     url = f'https://www.prydwen.gg{character}'
@@ -97,6 +99,7 @@ def get_character_details(character_order, character):
     print(f'Updated: {name} ({character_order[0]} of {character_order[1]})', flush=True)
     return json
 
+@log('(HSR) Getting light cone details...', '(HSR) Successfully retrieved light cone details')
 def get_light_cone_details(light_cone_order, light_cone_name, light_cone_rarity, light_cone_path, light_cone_stat, light_cone_effect, lock):
     name = clean_html(light_cone_name)
     json = {
@@ -115,6 +118,7 @@ def get_light_cone_details(light_cone_order, light_cone_name, light_cone_rarity,
         print(f'Updated: {name} ({light_cone_order[0]} of {light_cone_order[1]})', flush=True)
         return json
 
+@log('(HSR) Getting relic set details...', '(HSR) Successfully retrieved relic set details')
 def get_relic_set_details(relic_set_order, relic_set, lock):
     name = relic_set[0]
     effect = clean_html(relic_set[1])
@@ -130,6 +134,7 @@ def get_relic_set_details(relic_set_order, relic_set, lock):
         print(f'Updated: {name} ({relic_set_order[0]} of {relic_set_order[1]})', flush=True)
         return json
 
+@log('(HSR) Getting planetary ornament set details...', '(HSR) Successfully retrieved planetary ornament set details')
 def get_planetary_ornament_set_details(planetary_ornament_set_order, planetary_ornament_set, lock):
     name = planetary_ornament_set[0]
     effect = clean_html(planetary_ornament_set[1])
@@ -144,6 +149,7 @@ def get_planetary_ornament_set_details(planetary_ornament_set_order, planetary_o
         print(f'Updated: {name} ({planetary_ornament_set_order[0]} of {planetary_ornament_set_order[1]})', flush=True)
         return json
 
+@log('(HSR) Exporting to csv...', '(HSR) Successfully exported to csv')
 def json_to_csv(json, file_name, lock):
     csv = ''
 
