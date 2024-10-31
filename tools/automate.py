@@ -79,12 +79,12 @@ def generate_workflow_structure(python_script_list):
                         'run': 'python -m pip install --upgrade pip && pip install -r requirements.txt'
                     },
                     {
-                        'name': 'Run Python Scripts',
-                        'run': ' && '.join([f'python {script}' for script in python_script_list])
+                        'name': 'Create Directories',
+                        'run': ' && '.join([f'if [ ! -d output/{name} ]; then mkdir -p output/{name}; fi' for name in python_script_list_no_extension])
                     },
                     {
-                        'name': 'Create Download Directories',
-                        'run': ' && '.join([f'mkdir - output/{name}' for name in python_script_list_no_extension])
+                        'name': 'Run Python Scripts',
+                        'run': ' && '.join([f'python {script}' for script in python_script_list])
                     },
                     {
                         'name': 'Set up Git User',
