@@ -84,7 +84,7 @@ def generate_workflow_structure(python_script_list):
                     },
                     {
                         'name': 'Run Python Scripts',
-                        'run': ' && '.join([f'python {script}' for script in python_script_list])
+                        'run': ' && '.join([f'python scripts/{script}' for script in python_script_list])
                     },
                     {
                         'name': 'Set up Git User',
