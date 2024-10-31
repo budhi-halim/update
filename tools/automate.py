@@ -76,7 +76,7 @@ def generate_workflow_structure(python_script_list):
                     },
                     {
                         'name': 'Install Dependencies',
-                        'run': 'python -m pip install --upgrade pip && pip install -r requirements.txt'
+                        'run': 'python -m pip install --upgrade pip && pip install -r scripts/requirements.txt'
                     },
                     {
                         'name': 'Create Directories',
