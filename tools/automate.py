@@ -24,7 +24,7 @@ def get_requirements(python_script_list):
     # Get External Modules
     external_modules = set()
     for script in python_script_list:
-        with open(script, 'r') as file:
+        with open(f'scripts/{script}', 'r') as file:
             tree = ast.parse(file.read())
             for node in ast.walk(tree):
                 if isinstance(node, ast.Import):
