@@ -162,7 +162,7 @@ def json_to_csv(json, file_name, lock):
     
     # Output
     with lock:
-        file = open(file_name + '.csv', 'w')
+        file = open('hsr' + file_name + '.csv', 'w')
         file.write(csv)
         file.close
 

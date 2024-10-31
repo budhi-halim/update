@@ -55,7 +55,7 @@ def generate_workflow_structure(python_script_list):
             'workflow_dispatch': {},
             'schedule': [
                 {
-                    'cron': '0 * * * *'
+                    'cron': '0 17 * * *'
                 }
             ]
         },
@@ -117,43 +117,45 @@ def update_log_file(log_message, file_directory):
     with open(file_directory, 'a') as file:
         file.write(log_message)
 
-def log(func):
-    def wrapper(item):
-        # Prepare Constants
-        file_directory = 'logs/log.txt'
-        location = 'Asia/Jakarta'
-        timestamp_format = '%Y-%m-%d %H:%M:%S'
+def log(item):
+    def log_decorator(func):
+        def wrapper():
+            # Prepare Constants
+            file_directory = 'logs/log.txt'
+            location = 'Asia/Jakarta'
+            timestamp_format = '%Y-%m-%d %H:%M:%S'
 
-        # Get Start Time
-        start_time = get_local_time(location)
-        start_time_formatted = start_time.strftime(timestamp_format)
+            # Get Start Time
+            start_time = get_local_time(location)
+            start_time_formatted = start_time.strftime(timestamp_format)
 
-        # Log Start
-        log_message = f'{start_time_formatted} Updating {item}...\n'
-        update_log_file(log_message, file_directory)
+            # Log Start
+            log_message = f'{start_time_formatted} Updating {item}...\n'
+            update_log_file(log_message, file_directory)
+            
+            # Execute Function
+            func()
+
+            # Get Finish Time
+            finish_time = get_local_time(location)
+            finish_time_formatted = finish_time.strftime(timestamp_format)
+
+            # Get Duration
+            duration = finish_time - start_time
+            hours, remainder = divmod(duration.total_seconds(), 3600)
+            minutes, seconds = divmod(remainder, 60)
+            duration = f'{int(hours)}h {int(minutes)}m {int(seconds)}s'
+
+            # Log Finish
+            log_message = f'{finish_time_formatted} Finished Updating {item} ({duration})\n'
+            update_log_file(log_message, file_directory)
         
-        # Execute Function
-        func(item)
+        return wrapper
+    return log_decorator
 
-        # Get Finish Time
-        finish_time = get_local_time(location)
-        finish_time_formatted = finish_time.strftime(timestamp_format)
-
-        # Get Duration
-        duration = finish_time - start_time
-        hours, remainder = divmod(duration.total_seconds(), 3600)
-        minutes, seconds = divmod(remainder, 60)
-        duration = f'{int(hours)}h {int(minutes)}m {int(seconds)}s'
-
-        # Log Finish
-        log_message = f'{finish_time_formatted} Finished Updating {item} ({duration})\n'
-        update_log_file(log_message, file_directory)
-    
-    return wrapper
-
-@log
-def run_generate_requirements(item):
-    python_script_list = get_python_scripts('./')
+@log('Requirements')
+def run_generate_requirements():
+    python_script_list = get_python_scripts('scripts/')
 
     print('Generating requirements.txt')
 
@@ -162,8 +164,8 @@ def run_generate_requirements(item):
 
     print('Successfully generated requirements.txt')
 
-@log
-def run_generate_workflow(item):
+@log('Workflow')
+def run_generate_workflow():
     python_script_list = get_python_scripts('./')
 
     print('Generating execute_scripts.yml')
@@ -174,8 +176,8 @@ def run_generate_workflow(item):
     print('Successfully generated execute.yml')
 
 def main():
-    run_generate_requirements('Requirements')
-    run_generate_workflow('Workflow')
+    run_generate_requirements()
+    run_generate_workflow()
 
 if __name__ == '__main__':
     main()
