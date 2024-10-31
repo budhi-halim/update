@@ -3,7 +3,6 @@ import urllib.request
 import re
 import concurrent.futures
 from threading import Lock
-import os
 
 # Utility Functions
 def get_html(url):
@@ -267,4 +266,4 @@ if __name__ == '__main__':
         for i in range(len(json_list)):
             executor.submit(json_to_csv, json_list[i], file_names[i], lock)
 
-    print('\nDone\n')
+    print('\nDone')
