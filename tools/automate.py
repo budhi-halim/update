@@ -42,7 +42,7 @@ def get_requirements(python_script_list):
     return external_modules
 
 def generate_requirements(requirement_list):
-    with open('requirements.txt', 'w') as file:
+    with open('scripts/requirements.txt', 'w') as file:
         file_content = '\n'.join(requirement_list)
         file.write(file_content)
 
@@ -166,7 +166,7 @@ def run_generate_requirements():
 
 @log('Workflow')
 def run_generate_workflow():
-    python_script_list = get_python_scripts('./')
+    python_script_list = get_python_scripts('scripts/')
 
     print('Generating execute_scripts.yml')
 
