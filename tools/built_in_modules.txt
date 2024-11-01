@@ -180,3 +180,4 @@ zipfile
 zipimport
 zlib
 zoneinfo
+modules
