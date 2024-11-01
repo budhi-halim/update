@@ -3,7 +3,7 @@ import urllib.request
 import re
 import concurrent.futures
 from threading import Lock
-from tools.utility import *
+from modules.utility import *
 
 # Utility Functions
 def get_html(url):
