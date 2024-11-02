@@ -34,7 +34,7 @@ def get_requirements(python_script_list):
                             external_modules.add(module_name)
                 elif isinstance(node, ast.ImportFrom):
                     module_name = node.module.split('.')[0]
-                    if module_name and node.module not in built_in_modules:
+                    if module_name and module_name not in built_in_modules:
                         external_modules.add(module_name)
     
     external_modules = list(external_modules)
