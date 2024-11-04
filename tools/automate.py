@@ -16,6 +16,10 @@ def get_python_scripts(folder_directory):
     python_scripts.sort()
     return python_scripts
 
+def get_python_modules(folder_directory):
+    python_modules = [f'modules/{file_name}' for file_name in get_python_scripts(folder_directory)]
+    return python_modules
+
 def get_requirements(python_script_list):
     # Get Built in Modules
     with open('tools/built_in_modules.txt', 'r') as file:
@@ -166,10 +170,11 @@ def log(item):
 @log('Requirements')
 def run_generate_requirements():
     python_script_list = get_python_scripts('scripts/')
+    python_module_list = get_python_modules('scripts/modules/')
 
     print('Generating requirements.txt')
 
-    requirement_list = get_requirements(python_script_list)
+    requirement_list = get_requirements(python_script_list + python_module_list)
     generate_requirements(requirement_list)
 
     print('Successfully generated requirements.txt')
