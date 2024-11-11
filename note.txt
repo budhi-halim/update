@@ -1,0 +1,86 @@
+> Hello folks! I'm using the `concurrent.futures.ProcessPoolExecutor` with
+> a couple of functions that have been decorated with a class decorator.
+> Both `concurrent.futures` and `multiprocessing` breaks because "the
+> object's can't be pickled". There's a really simple fix for this, which
+> is just, instead of "decorating" the function (with the @), instantiate
+> the decorator and use it directly.
+>
+> Example. This is my (very simple, for demonstration purposes) decorator:
+>
+>     class CheckOnlyIntegers:
+>         def __init__(self, fn):
+>             self.fn = fn
+>
+>         def __call__(self, *args):
+>             if not all([type(arg) == int for arg in args]):
+>                 raise ValueError("Invalid param is not an integer")
+>             return self.fn(*args)
+>
+> If I define a simple `add` function and decorate it using the
+> `CheckOnlyIntegers` decorator:
+>
+>     @CheckOnlyIntegers
+>     def add(x, y):
+>         return x + y
+>
+> and try using a regular `ProcessPoolExecutor().submit(add, 2, 3)`, it
+> fails with:
+>
+> ```
+> Can't pickle <function add at 0x10ace3e18>: it's not the same object as
+> __main__.add.
+> ```
+By default instances of Python classes are pickled by pickling a set of
+their attributes. Functions are pickled by name. But since the name of
+self.fn corresponds to the decorated function, not the function itself,
+it can't be pickled.
+
+You can implement the explicit pickle support for your decorator that
+bypass this limitation.
+
+def __reduce__(self):
+return self.fn.__qualname__
+
+Now the decorated function will be pickled by name.
+
+It may help to set also self.__module__ = self.fn.__module__ in the
+constructor.
+
+
+Leonida Lay Kiik
+Gisella Reiko adelia
+Gabrielangelo Krisnamurti
+Evelyn Netanya Minerva
+Gracia Mirnova Andreana
+Jesslyn Carissa Lim
+Shalom Filadelphia 
+Naveen Maximilano Christo
+Kayra Melia Tjarda
+Andhika Chrisnadhi 
+Nelson gisellie
+Odelynne Jademurni
+Anastasia Yvonne Arifin
+Antonio Damien Wunan
+Justin B. Mihardja
+Jonathan Louis
+Arvin Halim
+Sefriana Pricillia Liany 
+Denissa Jocelyn Kurniawan
+Caitleen Jusuf 
+Christopher Ray Halim 
+Shemmayah Kusuma Soewanto
+Helga Amadea Yahya
+Michelle Kristanto 
+Catherine Claudia Citradianti
+Jennifer Aurelia
+Paulasita Suvarly
+nathanael giovani kurniaqan
+Chrezagnieszka Zeevanka Chayra 
+Nicholson Setiawan
+Florencia Zabrina Dorothy Chandra
+Efrando Augusto
+Cecilia Christa
+Anastasia Andantina Triwidyadhana
+Josephine irene wijaya
+Kristina Djiwandono
+Vyofinke Grisvianthio
