@@ -1,5 +1,5 @@
 No,Name,Rarity,Path,HP,ATK,DEF,Effect
-1,A Grounded Ascent,5,Harmony,0,0,0,Unknown
+1,A Grounded Ascent,5,Harmony,1164,476,529,"After the wearer uses Skill or Ultimate on one ally character, the wearer regenerates 6/6.5/7/7.5/8 Energy and the ability's target receives 1 stack of ""Hymn"" for 3 turn(s), stacking up to 3 time(s). Each stack of ""Hymn"" increases its holder's DMG dealt by 15/17.25/19.5/21.75/24%. After every 2 instance(s) of Skill or Ultimate the wearer uses on one ally character, recovers 1 Skill Point. "
 2,A Secret Vow,4,Destruction,1058,476,264,Increases DMG dealt by the wearer by 20/25/30/35/40%. The wearer also deals an extra 20/25/30/35/40% of DMG to enemies whose current HP percentage is equal to or higher than the wearer's current HP percentage. 
 3,Adversarial,3,Hunt,740,370,264,"When the wearer defeats an enemy, increases SPD by 10/12/14/16/18% for 2 turn(s)"
 4,After the Charmony Fall,4,Erudition,847,476,397,"Increases the wearer's Break Effect by 28/35/42/49/56%. After the wearer uses Ultimate, increases SPD by 8/10/12/14/16, lasting for 2 turn(s). "
