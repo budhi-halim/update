@@ -51,7 +51,7 @@ No,Name,Rarity,Path,HP,ATK,DEF,Effect
 50,Inherently Unjust Destiny,5,Preservation,1058,423,661,"Increases the wearer's DEF by 40/46/52/58/64%. When the wearer provides a Shield to an ally, the wearer's CRIT DMG increases by 40/46/52/58/64%, lasting for 2 turn(s). When the wearer's follow-up attack hits an enemy target, there is a 100/115/130/145/160% base chance to increase the DMG taken by the attacked enemy target by 10/11.5/13/14.5/16%, lasting for 2 turn(s)."
 51,It's Showtime,4,Nihility,1058,476,265,"When the wearer inflicts a debuff on an enemy, they gain a stack of Trick. Every stack of Trick increases the wearer's DMG dealt by 6/7/8/9/10% for a max of 3 stack(s). This effect lasts for 1 turn(s). When the wearer's Effect Hit Rate is greater than or equal to 80%, increases ATK by 20/24/28/32/36%."
 52,Landau's Choice,4,Preservation,952,423,396,"The wearer is more likely to be attacked, but DMG taken is reduced by 16/18/20/22/24%."
-53,Long Road Leads Home,5,Nihility,0,0,0,Unknown
+53,Long Road Leads Home,5,Nihility,952,476,661,"Increases the wearer's Break Effect by 60/70/80/90/100%. When an enemy target's Weakness gets broken, there is a 100% base chance to inflict the ""Charring"" state on it, which increases its Break DMG taken by 18/21/24/27/30%, lasting for 2 turn(s). This effect can stack 2 time(s). "
 54,Loop,3,Nihility,846,317,264,Increases DMG dealt from its wearer to Slowed enemies by 24/30/36/42/48%
 55,Make the World Clamor,4,Erudition,846,476,396,"The wearer regenerates 20/23/26/29/32 Energy immediately upon entering battle, and increases Ultimate DMG by 32/40/48/56/64%."
 56,Mediation,3,Harmony,846,317,264,"Upon battle entry, all allies receive 12/14/16/18/20 increased SPD for 1 turn(s)."
